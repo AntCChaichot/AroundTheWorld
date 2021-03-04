@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Around the World!
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content color = "light" [fullscreen] = true>
+  <ion-card color = "dark">
+    <ion-card-header>
+      <img src="https://image.freepik.com/free-vector/panorama-view-bangkok-thailand-city-skyline-with-world-famous-landmarks_41327-674.jpg" alt="Icon">
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Around the World!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Your Journey Starts Here!
+    </ion-card-content>
+  </ion-card>
+  <ion-button strong = True expand = "block" color = "warning" fill="solid" (click) = "countryPage()">
+    Country
+  </ion-button>
+  <ion-button strong = True expand = "block" color = "danger" fill="solid" (click) = "postCountryPage()">
+    Share Experience
+  </ion-button>
+  <ion-button strong = True expand = "block" color = "dark" fill="solid" (click) = "universityPage()">
+    Universities
+  </ion-button>
+  <ion-button strong = True expand = "block" color = "medium" fill="solid" (click) = "postUniversityPage()">
+    Post a new University
+  </ion-button>
+  <ion-button strong = True expand = "block" color = "light" fill="solid" (click) = "analyzePage()">
+    Analyze Data
+  </ion-button>
+  <ion-item-divider>
+      *Remarks: <br>
+      Please put in an appropriate Country Name <br>
+      e.g. Capital Letters, Correct Spellings, etc.
+  </ion-item-divider>
+</ion-content>

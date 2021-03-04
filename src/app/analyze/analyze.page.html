@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analyze Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-item>
+    <ion-label position = "stacked"> Amount of Universities in a Country </ion-label>
+    <ion-input placeholder = "Enter a country" [(ngModel)]='uni_amount' clearInput = true maxlength = 25> </ion-input>
+    <ion-button (click)="showCheckUniversity(uni_amount)" expand="block" color = "light">Get Country Information</ion-button>
+  </ion-item>
+  <ion-item *ngFor = "let amount of checkedUniList">
+    <ion-card><b>Total Number Of Universities:</b> {{amount['Total number of Universities']}}</ion-card>
+  </ion-item>
+  <ion-item>
+    <ion-label position = "stacked"> Amount of Secure/Unsecure web page of a University </ion-label>
+    <ion-input placeholder = "Enter a country" [(ngModel)]='link' clearInput = true maxlength = 25> </ion-input>
+    <ion-button (click)="showWebPages(link)" expand="block" color = "light">Get Web Page Information</ion-button>
+  </ion-item>
+  <ion-item *ngFor = "let links of linksList">
+    <ion-card>
+      <ion-card-content>
+        <b>Total Links:</b> {{links['Total Links']}} <br>
+        <b>Secure Links:</b> {{links['Secure Links']}} <br>
+        <b>Unsecure Links:</b> {{links['Unsecure Links']}}
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+  <ion-item>
+    <ion-label position = "stacked"> Border Countries </ion-label>
+    <ion-input placeholder = "Enter a country" [(ngModel)]='borders' clearInput = true maxlength = 25> </ion-input>
+    <ion-button (click)="showBorders(borders)" expand="block" color = "light">Get Border(s) Information</ion-button>
+  </ion-item>
+  <ion-item *ngFor = "let border of borderList">
+      
+      <ion-card>
+        <ion-card-content>
+          <b>Total number of border countries: {{border['Total number of borders']}}</b> <br>
+          <b>Border Countries: {{border['Border countries']}}</b>
+        </ion-card-content>  
+      </ion-card>
+  </ion-item>
+</ion-content>

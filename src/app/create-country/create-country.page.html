@@ -1,0 +1,40 @@
+<ion-header mode="ios" translucent = True>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color="danger">Post Personal Experience</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-item>
+    <ion-label position = "stacked">Post Personal experience </ion-label> <br>
+    <ion-item>
+      <ion-input placeholder = "Enter a Country" [(ngModel)]='country' clearInput = true maxlength = 40> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder = "Personal Experience" [(ngModel)]='experience' clearInput = true> </ion-input>
+    </ion-item> <br>
+    <ion-button (click)="postCountry(country,experience)" expand = "block" color = "danger">Share Your Experience!</ion-button>
+    <h3>{{ret_text}}</h3>
+  </ion-item>
+  <ion-item>
+    <ion-label position = "stacked">All Personal experience </ion-label> <br>
+    <ion-button (click)="showAllExp()" expand="block" color = "danger">View all Experience!</ion-button>
+    <ion-item *ngFor = "let exp of expList">
+      <ion-card>
+        <p><b>Country:</b> {{exp['Country']}}</p>
+        <p><b>Experience:</b> {{exp['Personal Experience']}}</p>
+      </ion-card>
+    </ion-item>
+  </ion-item>
+</ion-content>

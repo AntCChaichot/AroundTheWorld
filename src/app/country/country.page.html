@@ -1,0 +1,56 @@
+<ion-header mode = "ios" translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "primary">Country Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]=True padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-item>
+    <ion-label position = "stacked"> Country Information</ion-label>
+    <ion-input placeholder = "Enter a country" spellcheck = True [(ngModel)]='country_name' clearInput = true maxlength = 25> </ion-input>
+    <ion-button (click)="showCountry(country_name)" expand = "full" shape = "round" color = "warning">Get Country Information</ion-button>
+  </ion-item>
+  <div *ngIf = "show">
+  <ion-card>
+    <ion-card-content>
+      <p><b>Name:</b> {{countryList[0]['Name']}}</p>
+      <p><b>Capital City:</b> {{countryList[0]['Capital City']}}</p>
+      <p><b>Alpha Two Code:</b> {{countryList[0]['Alpha Two Code']}}</p>
+      <p><b>Calling Code:</b> {{countryList[0]['Calling Codes']}}</p>
+      <p><b>Alternative Spellings:</b> {{countryList[0]['Alternative Spellings']}}</p>
+      <p><b>Subregion:</b> {{countryList[0]['Subregion']}}</p>
+      <p><b>Population:</b> {{countryList[0]['Population']}}</p>
+      <p><b>Demonym:</b> {{countryList[0]['Demonym']}}</p>
+      <p><b>Timezone:</b> {{countryList[0]['Timezone']}}</p>
+      <p><b>Border(s):</b> {{countryList[0]['Borders']}}</p>
+      <p><b>Native Name:</b> {{countryList[0]['Native Name']}}</p>
+      <p *ngFor = "let currency_info of countryList[0]['Currency']">
+        <ion-label>
+          <h6><b>Currency Info: </b></h6>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;Code: {{currency_info['code']}}</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;Name: {{currency_info['name']}}</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;Symbol: {{currency_info['symbol']}}</p>
+        </ion-label>
+      </p>
+      <p *ngFor = "let languages_info of countryList[0]['languages']">
+        <ion-label>
+          <h6><b>Language Info:</b> </h6>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;Common name: {{languages_info['name']}}</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;Native name: {{languages_info['nativeName']}}</p>
+        </ion-label>
+      </p>
+    </ion-card-content>
+  </ion-card>
+  </div>
+</ion-content>

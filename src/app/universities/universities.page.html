@@ -1,0 +1,33 @@
+<ion-header mode = "ios" translucent = True>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "dark">Universities Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen] = True padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-item>
+    <ion-label position = "stacked">Universities Information</ion-label>
+    <ion-input placeholder = "Enter a country" [(ngModel)]='country_university' clearInput = true maxlength = 40> </ion-input>
+    <ion-button (click)="showUniversity(country_university)" spellcheck=True expand="block" shape = "round" color = "dark">Get Universities Information</ion-button>
+  </ion-item>
+  <ion-card *ngFor = "let item of universityList" color = "dark">
+      <p><b>Name: </b> {{item['Name']}}</p>
+      <p *ngIf = "item['State-Province'] != null"><b>State-Province:</b> {{item['State-Province']}}</p>
+      <p><b>Links:</b> <a href="{{item['Links']}}">{{item['Links']}}</a></p>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite) = "doInfinite($event)">
+		<ion-infinite-scroll-content loadingSpinner = "bubbles" loadingText="Loading...">
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Post a University</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-item>
+    <ion-label position = "stacked"> New University </ion-label>
+    <ion-input placeholder = "Enter a Name" [(ngModel)]='new_uni_name' clearInput = true> </ion-input>
+    <ion-input placeholder = "Enter a State or Province" [(ngModel)]='new_state_province' clearInput = true> </ion-input>
+    <ion-input placeholder = "Enter a Web Page" [(ngModel)]='new_web_pages' clearInput = true> </ion-input>
+    <ion-input placeholder = "Enter a Country" [(ngModel)]='new_uni_country' clearInput = true maxlength = 40> </ion-input>
+    <ion-button (click)="postUniversity(new_uni_name,new_state_province,new_web_pages,new_uni_country)" expand="block" color="medium">
+      Add Your new University!
+    </ion-button>
+    <h3>{{return_text}}</h3>
+  </ion-item>
+</ion-content>
